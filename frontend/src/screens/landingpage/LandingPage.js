@@ -1,7 +1,7 @@
 import { Button, Container, Row } from "react-bootstrap";
 import './LandingPage.css'
 import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import useNotes from "../../customHooks/useNotes";
 export default function LandingPage(){
     const {userInfo} = useNotes();
@@ -12,6 +12,8 @@ const navigate = useNavigate();
         navigate('/mynotes')
     }
       },[])
+      
+      
     return <div className="main">
         <Container>
             <Row>
@@ -20,12 +22,12 @@ const navigate = useNavigate();
                     <p className="subtitle">one safe place for all your notes.</p>
                 </div>
                 <div className="buttonContainer">
-                    <a  href="/login">
+                    <Link  to={"/login"}>
                     <Button size="lg" className="landingbutton">Login</Button>
-                    </a>
-                    <a  href="/signup">
+                    </Link>
+                    <Link  to={"/signup"}>
                     <Button size="lg" className="landingbutton" variant="outline-primary">register</Button>
-                    </a>
+                    </Link>
                 </div>
             </Row>
         </Container>
