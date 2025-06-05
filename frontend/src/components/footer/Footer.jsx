@@ -1,5 +1,4 @@
 import { Col, Container, Row } from "react-bootstrap";
-// video 15.39
 export default function Footer(){
     return (
 

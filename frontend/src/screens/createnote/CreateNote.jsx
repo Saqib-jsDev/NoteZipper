@@ -3,7 +3,7 @@ import MainScreen from "../../components/MainScreen";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/loading/Loading";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch,  } from "react-redux";
 import { createNoteThunk } from "../../store/features/notes/notesActions";
 import NotesCards from "../../components/NotesCards";
 import useNotes from "../../customHooks/useNotes";
@@ -28,6 +28,8 @@ export default function CreateNote() {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("category", category);
+    console.log(Object.fromEntries(formData.entries()));
+    
     dispatch(createNoteThunk(formData));
     resetHandler();
     navigate("/mynotes")

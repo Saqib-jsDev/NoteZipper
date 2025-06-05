@@ -7,10 +7,10 @@ import useNotes from "../../customHooks/useNotes";
 
 
 export default function MyNotes({search}) {
-      const {loading,error,notes} = useNotes(true)
+      const {loading,error,notes,userInfo} = useNotes(true)
   
   return (
-    <MainScreen title="WelCome back Saqib Ali  ..... ">
+    <MainScreen title={`WelCome back ${userInfo?.name} ..... `}>
       <Link to={"createnote"}>
         <Button
           style={{

@@ -1,24 +1,24 @@
 import Container from "react-bootstrap/Container";
-import { Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Nav, Form, FormControl,  } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect,  } from "react";
-import { useDispatch, useSelector, } from "react-redux";
+import { useDispatch, } from "react-redux";
 import { logout } from "../../store/features/user/userSlice";
 import useNotes from "../../customHooks/useNotes";
 import { baseURL } from "../../store/api";
 export default function Header({ setSearch }) {
   
+  const {userInfo} = useNotes()
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
   };
-const {userInfo} = useNotes()
   useEffect(() => {
     if (!userInfo?.name) {
-      navigate("/login");
+      navigate("/");
     }
   }, [userInfo]);
   const profileHandle = (e)=>{
@@ -50,7 +50,7 @@ const {userInfo} = useNotes()
            <Nav>
             {userInfo?.name ? (
               <>
-                <Nav.Link href="/mynotes">My Notes</Nav.Link>
+                <Link className="text-white" to={"/mynotes"}>My Notes</Link>
                 <NavDropdown
                   title={`${userInfo.name}`}
                   id="collasible-nav-dropdown"
@@ -73,7 +73,7 @@ const {userInfo} = useNotes()
                 </NavDropdown>
               </>
             ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Link className="text-white" to={"/login"}>Login</Link>
             )}
           </Nav>
         </Navbar.Collapse>

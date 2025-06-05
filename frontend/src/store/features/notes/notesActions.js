@@ -27,12 +27,17 @@ const getAllNotesThunk = createAsyncThunk(
 const createNoteThunk = createAsyncThunk(
   "note/createNote",
   async (formData,thunkAPI) => {
+    console.log(formData);
+        console.log(Object.fromEntries(formData.entries()));
+
+    
     const state = thunkAPI.getState();
     const userInfo = state.userAuth.userInfo;
     try {
       const config = {
         headers :{
-          authorization:`Bearer ${userInfo.token}`
+          authorization:`Bearer ${userInfo.token}`,
+          "Content-Type": "application/json",
         }
       }
       const {data} = await api.post("api/notes/create",formData,config);

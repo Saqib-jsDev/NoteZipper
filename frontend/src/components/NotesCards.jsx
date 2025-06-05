@@ -1,4 +1,4 @@
-import { Accordion, Badge, Button, Card } from "react-bootstrap";
+import { Badge, Button, Card } from "react-bootstrap";
 import Loading from "./loading/Loading";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import {  useState } from "react";

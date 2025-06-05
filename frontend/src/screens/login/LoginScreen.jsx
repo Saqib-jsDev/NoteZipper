@@ -7,7 +7,6 @@ import Loading from "../../components/loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { useDispatch ,useSelector} from "react-redux"
 import {userLoginthunk} from "../../store/features/user/userActions";
-import { getAllNotesThunk } from "../../store/features/notes/notesActions";
 
 
 
