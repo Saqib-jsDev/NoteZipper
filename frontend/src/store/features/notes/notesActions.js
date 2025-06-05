@@ -28,7 +28,6 @@ const createNoteThunk = createAsyncThunk(
   "note/createNote",
   async (formData,thunkAPI) => {
     console.log(formData);
-        console.log(Object.fromEntries(formData.entries()));
 
     
     const state = thunkAPI.getState();
@@ -56,7 +55,8 @@ const updateNoteThunk = createAsyncThunk("notes/updatenote",async ({formData,id}
     try {
       const config = {
         headers:{
-          authorization:`Bearer ${userInfo.token}`
+          authorization:`Bearer ${userInfo.token}`,
+           "Content-Type": "application/json",
         }
       }
       const {data} = await api.put(`api/notes/${id}`,formData,config);
@@ -78,7 +78,8 @@ const deleteNoteThunk = createAsyncThunk(
     try {
       const config = {
         headers:{
-          authorization:`Bearer ${userInfo.token}`
+          authorization:`Bearer ${userInfo.token}`,
+           "Content-Type": "application/json",
         }
       }
       const {data} = await api.delete(`api/notes/${id}`,config);
